@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docker-compose.yml = docker-compose.yml
 		Dockerfile.api = Dockerfile.api
 		Dockerfile.tests = Dockerfile.tests
+		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherForecastAPI.Tests", "WeatherForecastAPI.Tests\WeatherForecastAPI.Tests.csproj", "{25583A21-8D1D-4EB4-8FEC-C6446B1C1E08}"

@@ -12,16 +12,16 @@ This project is a .NET 8 Web API for storing and retrieving weather forecasts ba
 
 ```
 /project-root
-├── Dockerfile.api                # Dockerfile for the application
-├── Dockerfile.tests              # Dockerfile for running tests
-├── docker-compose.yml            # Docker Compose configuration
-├── WeatherForecastAPI/           # Main application source code
-│   ├── WeatherForecastAPI.csproj
-│   └── other files...
-├── WeatherForecastAPI.Tests/     # Test project source code
-│   ├── WeatherForecastAPI.Tests.csproj
-│   └── other files...
-└── WeatherForecastAPI.sln        # Solution file
+|-- Dockerfile.api                # Dockerfile for the application
+|-- Dockerfile.tests              # Dockerfile for running tests
+|-- docker-compose.yml            # Docker Compose configuration
+|-- WeatherForecastAPI/           # Main application source code
+|	|-- WeatherForecastAPI.csproj
+|	|-- other files...
+|-- WeatherForecastAPI.Tests/     # Test project source code
+|	|-- WeatherForecastAPI.Tests.csproj
+|	|-- other files...
+|-- WeatherForecastAPI.sln        # Solution file
 ```
 
 ## Configuration
