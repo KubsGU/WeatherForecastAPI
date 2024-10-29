@@ -1,0 +1,18 @@
+# Use the .NET SDK image for building and testing
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /app
+
+# Copy solution and project files for restore
+COPY *.sln ./
+COPY WeatherForecastAPI/*.csproj WeatherForecastAPI/
+COPY WeatherForecastAPI.Tests/*.csproj WeatherForecastAPI.Tests/
+RUN dotnet restore
+
+# Copy source and test code
+COPY . .
+
+# Build solution
+RUN dotnet build -c Release --no-restore
+
+# Run tests and output results in trx format
+CMD ["dotnet", "test", "--no-restore", "--logger:trx;LogFileName=/app/TestResults/test_results.trx"]

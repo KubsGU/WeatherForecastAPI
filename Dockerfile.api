@@ -1,0 +1,30 @@
+# Use the .NET SDK image to build the app
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /app
+
+# Copy the solution file and all project files to the container
+COPY *.sln ./
+COPY WeatherForecastAPI/WeatherForecastAPI.csproj WeatherForecastAPI/
+COPY WeatherForecastAPI.Tests/WeatherForecastAPI.Tests.csproj WeatherForecastAPI.Tests/
+
+# Restore dependencies
+RUN dotnet restore
+
+# Copy the rest of the source code and build the app
+COPY . .
+RUN dotnet publish -c Release -o /out
+
+# Runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+WORKDIR /app
+COPY --from=build /out .
+
+# Set environment variables for HTTPS and connection string
+ENV ASPNETCORE_URLS="http://+:5000"
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ConnectionStrings__SqlServerConnection="Server=db;Database=WeatherForecastDb;User Id=user;Password=password;"
+
+EXPOSE 5000
+
+# Run the application
+ENTRYPOINT ["dotnet", "WeatherForecastAPI.dll"]
