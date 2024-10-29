@@ -104,7 +104,6 @@ You can modify these credentials as needed.
 Swagger UI is enabled to test and interact with the API. Once the app is running, you can access Swagger UI at:
 
 - **HTTP**: [http://localhost:5000/swagger](http://localhost:5000/swagger)
-- **HTTPS**: [https://localhost:5001/swagger](https://localhost:5001/swagger)
 
 Swagger will display available endpoints and allow you to interact with the API directly from the browser.
 
