@@ -5,7 +5,7 @@
       dockerfile: Dockerfile.api  
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__SqlServerConnection=Server=mssql;Database=WeatherForecastDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;
+      - ConnectionStrings__SqlServerConnection=Server=mssql;Database=WeatherForecastDb;User Id=sa;Password=DEUQN-PvR-YB9lDGtaKElA;TrustServerCertificate=True;
     ports:
       - "5000:5000"
     depends_on:
@@ -24,7 +24,8 @@
     image: mcr.microsoft.com/mssql/server:2022-latest
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=YourStrong!Passw0rd
+      - SA_PASSWORD=DEUQN-PvR-YB9lDGtaKElA
+
     ports:
       - "1433:1433"
     volumes:
