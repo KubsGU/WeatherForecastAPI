@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using WeatherForecastAPI.Data;
 using WeatherForecastAPI.Helpers.DateTimeProvider;
 using WeatherForecastAPI.Models;
@@ -46,6 +47,15 @@ if (app.Environment.IsDevelopment())
 
 app.MapPost("/api/weather", async (IWeatherService weatherService, AddWeatherRequest request) =>
 {
+    var validationContext = new ValidationContext(request);
+    var validationResults = new List<ValidationResult>();
+
+    bool isValid = Validator.TryValidateObject(request, validationContext, validationResults, true);
+
+    if (!isValid)
+    {
+        return Results.BadRequest(validationResults);
+    }
     var forecast = await weatherService.FetchAndSaveWeatherForecastAsync(request);
     return forecast != null ? Results.Created($"/api/weather/{forecast.CoordinateId}", forecast) : Results.BadRequest("Unable to fetch weather data.");
 });
