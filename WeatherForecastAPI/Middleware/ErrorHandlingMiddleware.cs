@@ -19,7 +19,7 @@ public class ErrorHandlingMiddleware
     {
         try
         {
-            await _next(context); // Call the next middleware
+            await _next(context);
         }
         catch (ServiceUnavailableException ex)
         {
